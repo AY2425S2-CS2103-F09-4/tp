@@ -10,8 +10,7 @@
         "wilson-soon": "Wilson Soon",
         "wei-cheng": "Wei Cheng",
         "tang-ming-shan": "Tang Ming Shan",
-        "jane-doe": "Jane Doe",
-        "johnny-doe": "Johnny Doe"
+        "wei-tianyue": "Wei Tianyue"
       },
       "headingKeywords": {}
     },
@@ -140,6 +139,14 @@
       "title": "Wei Cheng's Project Portfolio Page",
       "headings": {
         "project-teamscape": "Project: TeamScape"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/jeremiah33-3.md",
+      "title": "Wei Tianyue's Project Portfolio Page",
+      "headings": {
+        "project-addressbook-level-3": "Project: AddressBook Level 3"
       },
       "headingKeywords": {}
     },
