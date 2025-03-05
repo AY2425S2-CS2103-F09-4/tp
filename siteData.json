@@ -6,7 +6,8 @@
       "title": "About Us",
       "headings": {
         "about-us": "About Us",
-        "project-team": "Project team",
+        "teamscape": "TeamScape",
+        "wilson-soon": "Wilson Soon",
         "wei-cheng": "Wei Cheng",
         "tang-ming-shan": "Tang Ming Shan",
         "jane-doe": "Jane Doe",
@@ -153,6 +154,14 @@
     {
       "src": "team/mingshan2705.md",
       "title": "John Doe's Project Portfolio Page",
+      "headings": {
+        "project-addressbook-level-3": "Project: AddressBook Level 3"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/wilsonsfh.md",
+      "title": "Wilson Soon's Project Portfolio Page",
       "headings": {
         "project-addressbook-level-3": "Project: AddressBook Level 3"
       },
