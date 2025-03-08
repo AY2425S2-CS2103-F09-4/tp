@@ -7,6 +7,7 @@
       "headings": {
         "about-us": "About Us",
         "teamscape": "TeamScape",
+        "bryan-kuan": "Bryan Kuan",
         "wilson-soon": "Wilson Soon",
         "wei-cheng": "Wei Cheng",
         "tang-ming-shan": "Tang Ming Shan",
@@ -139,6 +140,14 @@
       "title": "Wei Cheng's Project Portfolio Page",
       "headings": {
         "project-teamscape": "Project: TeamScape"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/bkkuan.md",
+      "title": "Bryan Kuan's Project Portfolio Page",
+      "headings": {
+        "project-addressbook-level-3": "Project: AddressBook Level 3"
       },
       "headingKeywords": {}
     },
