@@ -443,7 +443,7 @@ with(this){return _c('ol',[_c('li',[_v("Should work on any "),_c('em',[_v("mains
 with(this){return _c('h3',{attrs:{"id":"glossary"}},[_v("Glossary"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#glossary","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('strong',[_v("Mainstream OS")]),_v(": Windows, Linux, Unix, MacOS")]),_v(" "),_c('li',[_c('strong',[_v("Private contact detail")]),_v(": A contact detail that is not meant to be shared with others")])])}
+with(this){return _c('pre',[_c('code',{pre:true},[_v("- **CLI**: Command Line Interface. A text-based way to interact with the app (e.g., `add n/John`).\n- **Mainstream OS**: Windows, Linux, Unix, macOS.\n- **Private contact detail**: A contact detail not meant to be shared (e.g., personal phone number).\n- **Task**: A unit of work assigned to a team member, which can have subtasks and deadlines.\n- **Subtask**: A smaller component of a task (e.g., \"Design UI mockups\" as part of \"Develop login feature\").\n- **Model**: The component managing data (e.g., storing team members and tasks).\n- **UI**: User Interface. The visual part of the app (e.g., buttons, lists).\n- **Storage**: Component that saves/loads data to/from the hard drive.\n- **API**: Application Programming Interface. How components interact (e.g., `Logic.java` defines the API for executing commands).\n- **JSON**: A file format used to store data (e.g., team members are saved in `addressbook.json`).\n")])])}
 },function anonymous(
 ) {
 with(this){return _c('h2',{attrs:{"id":"appendix-instructions-for-manual-testing"}},[_c('strong',[_v("Appendix: Instructions for manual testing")]),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#appendix-instructions-for-manual-testing","onclick":"event.stopPropagation()"}})])}
@@ -467,6 +467,6 @@ with(this){return _c('h3',{attrs:{"id":"saving-data"}},[_v("Saving data"),_c('a'
 with(this){return _c('ol',[_c('li',[_c('p',[_v("Dealing with missing/corrupted data files")]),_v(" "),_c('ol',[_c('li',[_c('em',[_v("{explain how to simulate a missing/corrupted file, and the expected behavior}")])])])]),_v(" "),_c('li',[_c('p',[_c('em',[_v("{ more test cases …​ }")])])])])}
 },function anonymous(
 ) {
-with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.5.3")]),_v(", generated on Sun, 9 Mar 2025, 2:18:50 GMT+8]")])])])}
+with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.5.3")]),_v(", generated on Mon, 10 Mar 2025, 0:21:44 GMT+8]")])])])}
 }];
   
