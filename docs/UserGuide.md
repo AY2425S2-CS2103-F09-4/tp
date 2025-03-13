@@ -173,6 +173,14 @@ If your changes to the data file makes its format invalid, AddressBook will disc
 Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </box>
 
+### Generate Task Status Report : `report`
+
+Shows a summary of all tasks and their completion statuses.
+
+Format: `report`
+
+Example output:
+
 ### Archiving data files `[coming in v2.0]`
 
 _Details coming soon ..._
