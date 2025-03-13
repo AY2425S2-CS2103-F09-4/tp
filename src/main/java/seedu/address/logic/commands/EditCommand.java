@@ -4,8 +4,12 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_OTHER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_POSITION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SKILL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TELEGRAM;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.Collections;
@@ -21,11 +25,15 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.other.Other;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.Position;
+import seedu.address.model.person.Telegram;
+import seedu.address.model.skill.Skill;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -39,11 +47,15 @@ public class EditCommand extends Command {
             + "by the index number used in the displayed person list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_NAME + "NAME] "
-            + "[" + PREFIX_PHONE + "PHONE] "
-            + "[" + PREFIX_EMAIL + "EMAIL] "
-            + "[" + PREFIX_ADDRESS + "ADDRESS] "
+            + PREFIX_NAME + "NAME "
+            + PREFIX_PHONE + "PHONE "
+            + PREFIX_EMAIL + "EMAIL "
+            + PREFIX_TELEGRAM + "TELEGRAM "
+            + PREFIX_POSITION + "POSITION "
+            + PREFIX_ADDRESS + "ADDRESS "
             + "[" + PREFIX_TAG + "TAG]...\n"
+            + "[" + PREFIX_SKILL + "SKILL]...\n"
+            + "[" + PREFIX_OTHER + "OTHER]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
             + PREFIX_EMAIL + "johndoe@example.com";
@@ -98,10 +110,15 @@ public class EditCommand extends Command {
         Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
         Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
+        Telegram updatedTelegram = editPersonDescriptor.getTelegram().orElse(personToEdit.getTelegram());
+        Position updatedPosition = editPersonDescriptor.getPosition().orElse(personToEdit.getPosition());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
+        Set<Skill> updatedSkills = editPersonDescriptor.getSkills().orElse(personToEdit.getSkills());
+        Set<Other> updatedOthers = editPersonDescriptor.getOthers().orElse(personToEdit.getOthers());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedTelegram, updatedPosition, updatedAddress,
+                updatedTags, updatedSkills, updatedOthers);
     }
 
     @Override
@@ -136,8 +153,12 @@ public class EditCommand extends Command {
         private Name name;
         private Phone phone;
         private Email email;
+        private Telegram telegram;
+        private Position position;
         private Address address;
         private Set<Tag> tags;
+        private Set<Skill> skills;
+        private Set<Other> others;
 
         public EditPersonDescriptor() {}
 
@@ -149,15 +170,19 @@ public class EditCommand extends Command {
             setName(toCopy.name);
             setPhone(toCopy.phone);
             setEmail(toCopy.email);
+            setTelegram(toCopy.telegram);
+            setPosition(toCopy.position);
             setAddress(toCopy.address);
             setTags(toCopy.tags);
+            setSkills(toCopy.skills);
+            setOthers(toCopy.others);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags);
+            return CollectionUtil.isAnyNonNull(name, phone, email, telegram, position, address, tags, skills, others);
         }
 
         public void setName(Name name) {
@@ -184,6 +209,22 @@ public class EditCommand extends Command {
             return Optional.ofNullable(email);
         }
 
+        public void setTelegram(Telegram telegram) {
+            this.telegram = telegram;
+        }
+
+        public Optional<Telegram> getTelegram() {
+            return Optional.ofNullable(telegram);
+        }
+
+        public void setPosition(Position position) {
+            this.position = position;
+        }
+
+        public Optional<Position> getPosition() {
+            return Optional.ofNullable(position);
+        }
+
         public void setAddress(Address address) {
             this.address = address;
         }
@@ -207,6 +248,40 @@ public class EditCommand extends Command {
          */
         public Optional<Set<Tag>> getTags() {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
+        }
+
+        /**
+         * Sets {@code skills} to this object's {@code skills}.
+         * A defensive copy of {@code skills} is used internally.
+         */
+        public void setSkills(Set<Skill> skills) {
+            this.skills = (skills != null) ? new HashSet<>(skills) : null;
+        }
+
+        /**
+         * Returns an unmodifiable skill set, which throws {@code UnsupportedOperationException}
+         * if modification is attempted.
+         * Returns {@code Optional#empty()} if {@code skills} is null.
+         */
+        public Optional<Set<Skill>> getSkills() {
+            return (skills != null) ? Optional.of(Collections.unmodifiableSet(skills)) : Optional.empty();
+        }
+
+        /**
+         * Sets {@code others} to this object's {@code others}.
+         * A defensive copy of {@code others} is used internally.
+         */
+        public void setOthers(Set<Other> others) {
+            this.others = (others != null) ? new HashSet<>(others) : null;
+        }
+
+        /**
+         * Returns an unmodifiable other set, which throws {@code UnsupportedOperationException}
+         * if modification is attempted.
+         * Returns {@code Optional#empty()} if {@code others} is null.
+         */
+        public Optional<Set<Other>> getOthers() {
+            return (others != null) ? Optional.of(Collections.unmodifiableSet(others)) : Optional.empty();
         }
 
         @Override

@@ -9,10 +9,14 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.other.Other;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.Position;
+import seedu.address.model.person.Telegram;
+import seedu.address.model.skill.Skill;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -96,6 +100,31 @@ public class ParserUtil {
     }
 
     /**
+     * Parses a {@code String telegram} into an {@code Telegram}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code telegram} is invalid.
+     */
+    public static Telegram parseTelegram(String telegram) throws ParseException {
+        requireNonNull(telegram);
+        String trimmedTelegram = telegram.trim();
+        if (!Telegram.isValidTelegram(trimmedTelegram)) {
+            throw new ParseException(Telegram.MESSAGE_CONSTRAINTS);
+        }
+        return new Telegram(trimmedTelegram);
+    }
+
+    /**
+     * Parses a {@code String position} into an {@code Position}.
+     * Leading and trailing whitespaces will be trimmed.
+     */
+    public static Position parsePosition(String position) {
+        requireNonNull(position);
+        String trimmedPosition = position.trim();
+        return new Position(trimmedPosition);
+    }
+
+    /**
      * Parses a {@code String tag} into a {@code Tag}.
      * Leading and trailing whitespaces will be trimmed.
      *
@@ -120,5 +149,53 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses a {@code String Skill} into a {@code Skill}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code skill} is invalid.
+     */
+    public static Skill parseSkill(String skill) throws ParseException {
+        requireNonNull(skill);
+        String trimmedSkill = skill.trim();
+        return new Skill(trimmedSkill);
+    }
+
+    /**
+     * Parses {@code Collection<String> skills} into a {@code Set<Skill>}.
+     */
+    public static Set<Skill> parseSkills(Collection<String> skills) throws ParseException {
+        requireNonNull(skills);
+        final Set<Skill> skillSet = new HashSet<>();
+        for (String skillName : skills) {
+            skillSet.add(parseSkill(skillName));
+        }
+        return skillSet;
+    }
+
+    /**
+     * Parses a {@code String other} into a {@code Other}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code Other} is invalid.
+     */
+    public static Other parseOther(String other) throws ParseException {
+        requireNonNull(other);
+        String trimmedOther = other.trim();
+        return new Other(trimmedOther);
+    }
+
+    /**
+     * Parses {@code Collection<String> others} into a {@code Set<Other>}.
+     */
+    public static Set<Other> parseOthers(Collection<String> others) throws ParseException {
+        requireNonNull(others);
+        final Set<Other> otherSet = new HashSet<>();
+        for (String other : others) {
+            otherSet.add(parseOther(other));
+        }
+        return otherSet;
     }
 }

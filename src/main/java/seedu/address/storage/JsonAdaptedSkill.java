@@ -1,0 +1,43 @@
+package seedu.address.storage;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+
+import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.skill.Skill;
+
+/**
+ * Jackson-friendly version of {@link Skill}.
+ */
+class JsonAdaptedSkill {
+
+    private final String skillName;
+
+    /**
+     * Constructs a {@code JsonAdaptedSkill} with the given {@code skillName}.
+     */
+    @JsonCreator
+    public JsonAdaptedSkill(String skillName) {
+        this.skillName = skillName;
+    }
+
+    /**
+     * Converts a given {@code Skill} into this class for Jackson use.
+     */
+    public JsonAdaptedSkill(Skill source) {
+        skillName = source.skillName;
+    }
+
+    @JsonValue
+    public String getSkillName() {
+        return skillName;
+    }
+
+    /**
+     * Converts this Jackson-friendly adapted tag object into the model's {@code Skill} object.
+     */
+    public Skill toModelType() throws IllegalValueException {
+        return new Skill(skillName);
+    }
+
+}
