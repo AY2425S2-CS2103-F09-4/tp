@@ -46,8 +46,7 @@ public class TaskCommandParser implements Parser<TaskCommand> {
                 throw new ParseException(MESSAGE_INCORRECT_DATE_FORMAT);
             }
         }
-
-        String taskDescription = argMultimap.getValue(PREFIX_TASK_DESC).get();
+        String taskDescription = argMultimap.getValue(PREFIX_TASK_DESC).orElse("");
 
         return new TaskCommand(index, new Task(taskDescription, TaskStatus.YET_TO_START, dueDate));
     }
