@@ -16,6 +16,10 @@ Class ParserUtil
 Class ArgumentMultimap
 Class ArgumentTokenizer
 Class Prefix
+Class FindCommandParser
+Class NameContainsKeywordsPredicate
+Class TagsInKeywordsPredicate
+Class TasksInKeywordsPredicate
 }
 
 Class HiddenOutside #FFFFFF
@@ -35,4 +39,9 @@ XYZCommandParser ..> ParserUtil
 ParserUtil .down.> Prefix
 ArgumentTokenizer .down.> Prefix
 XYZCommand -up-|> Command
+
+FindCommandParser ..> NameContainsKeywordsPredicate
+FindCommandParser ..> TagsInKeywordsPredicate
+FindCommandParser ..> TasksInKeywordsPredicate
+FindCommandParser ..> ArgumentMultimap
 @enduml
