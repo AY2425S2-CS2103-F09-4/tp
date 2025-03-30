@@ -7,14 +7,22 @@ skinparam classBackgroundColor LOGIC_COLOR
 package Logic as LogicPackage {
 
 package "Parser Classes" as ParserClasses{
+Class "<<interface>>\nParser" as Parser
 }
 Class XYZCommand
 Class CommandResult
-Class "{abstract}\nCommand" as Command
+Class "{abstract}\nCommand" as Command {
+    +execute(): CommandResult throws CommandException
+}
 
 
 Class "<<interface>>\nLogic" as Logic
-Class LogicManager
+Class LogicManager {
+    +FILE_OPS_ERROR_FORMAT: String
+    +FILE_OPS_PERMISSION_ERROR_FORMAT:String
+    -model: Model
+    -storage: Storage
+    -addressBookParser: AddressBookParser
 }
 
 package Model {
@@ -22,6 +30,13 @@ Class HiddenModel #FFFFFF
 }
 
 package Storage {
+}
+
+package Exception {
+    Class CommandException {
+        +CommandException(message: String)
+        +CommandException(message: String, cause: Throwable)
+    }
 }
 
 Class HiddenOutside #FFFFFF
@@ -44,4 +59,6 @@ note right of XYZCommand: XYZCommand = AddCommand, \nFindCommand, etc
 Logic ..> CommandResult
 LogicManager .down.> CommandResult
 Command .up.> CommandResult : <<create>>
+
+Command ..> CommandException : <<throws>>
 @enduml
