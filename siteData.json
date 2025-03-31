@@ -99,7 +99,8 @@
       "headings": {
         "testing-guide": "Testing guide",
         "running-tests": "Running tests",
-        "types-of-tests": "Types of tests"
+        "types-of-tests": "Types of tests",
+        "taskcommmandparsertest": "TaskCommmandParserTest"
       },
       "headingKeywords": {}
     },
@@ -114,6 +115,7 @@
         "adding-a-person-add": "Adding a person: add",
         "listing-all-persons-list": "Listing all persons : list",
         "editing-a-person-edit": "Editing a person : edit",
+        "adding-a-task-to-a-member-task": "Adding a task to a member: task",
         "locating-persons-by-name-tags-or-tasks-find": "Locating persons by name, tags, or tasks: find",
         "deleting-a-person-delete": "Deleting a person : delete",
         "listing-tasks-assigned-to-a-member-listtasks": "Listing tasks assigned to a member : listtasks",
