@@ -6,7 +6,19 @@ Class "<<interface>>\nParser" as Parser
 Class RemarkCommandParser {
   +parse(): RemarkCommand
 }
+
+Class TaskCommandParser {
+  +parse(): TaskCommand
+}
+
 Class ParserException
+Class TaskCommand
+Class TaskStatus <<enum>>
+
+TaskCommandParser .up.|> Parser
+TaskCommandParser .right.> ParserException : throws >
+TaskCommandParser .down.> TaskCommand : <<create>>
+TaskCommand .down.> TaskStatus : <<uses>>
 
 RemarkCommandParser .up.|> Parser
 Parser .right.> ParserException: throws >
