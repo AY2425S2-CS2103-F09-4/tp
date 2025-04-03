@@ -1,0 +1,34 @@
+@startuml
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor MODEL_COLOR
+skinparam classBackgroundColor MODEL_COLOR
+skinparam classAttributeIconSize 10
+
+package Model <<Rectangle>> {
+
+  class Person {
+    +tasks : List<Task>
+  }
+
+  class Task {
+    -description : String
+    -status : TaskStatus
+    -dueDate : LocalDateTime
+  }
+
+  enum TaskStatus {
+    YET_TO_START
+    IN_PROGRESS
+    COMPLETED
+  }
+
+  class LocalDateTime
+}
+
+' Relationships
+Person *-- "0..*" Task
+Task --> TaskStatus
+Task --> LocalDateTime
+
+@enduml

@@ -5,24 +5,33 @@ skinparam arrowColor MODEL_COLOR
 skinparam classBackgroundColor MODEL_COLOR
 
 Package Model as ModelPackage <<Rectangle>> {
-Class "<<interface>>\nReadOnlyAddressBook" as ReadOnlyAddressBook
-Class "<<interface>>\nReadOnlyUserPrefs" as ReadOnlyUserPrefs
-Class "<<interface>>\nModel" as Model
-Class AddressBook
-Class ModelManager
-Class UserPrefs
+  Class "<<interface>>\nReadOnlyAddressBook" as ReadOnlyAddressBook
+  Class "<<interface>>\nReadOnlyUserPrefs" as ReadOnlyUserPrefs
+  Class "<<interface>>\nModel" as Model
+  Class AddressBook
+  Class ModelManager
+  Class UserPrefs
 
-Class UniquePersonList
-Class Person
-Class Address
-Class Email
-Class Name
-Class Phone
-Class Tag
-Class Task
-Class TaskStatus <<enum>>
+  Class UniquePersonList
+  Class Person
+  Class Address
+  Class Email
+  Class Name
+  Class Phone
+  Class Tag
+  Class Skill
+  Class Task {
+    - dueDate : LocalDate
+  }
+  Enum TaskStatus {
+    YET_TO_START
+    IN_PROGRESS
+    COMPLETED
+  }
+  Class Position
+  Class Telegram
 
-Class I #FFFFFF
+  Class I #FFFFFF
 }
 
 Class HiddenOutside #FFFFFF
@@ -39,20 +48,18 @@ UserPrefs .up.|> ReadOnlyUserPrefs
 
 AddressBook *--> "1" UniquePersonList
 UniquePersonList --> "0..*" Person
+
 Person *--> Name
 Person *--> Phone
 Person *--> Email
 Person *--> Address
 Person *--> "*" Tag
+Person *--> "*" Skill
+Person *--> Position
+Person *--> Telegram
 Person *--> "*" Task
+
 Task --> TaskStatus
-
-Person -[hidden]up--> I
-UniquePersonList -[hidden]right-> I
-
-Name -[hidden]right-> Phone
-Phone -[hidden]right-> Address
-Address -[hidden]right-> Email
 
 ModelManager --> "1..* filtered" Person
 @enduml

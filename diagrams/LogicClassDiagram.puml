@@ -6,59 +6,91 @@ skinparam classBackgroundColor LOGIC_COLOR
 
 package Logic as LogicPackage {
 
-package "Parser Classes" as ParserClasses{
-Class "<<interface>>\nParser" as Parser
-}
-Class XYZCommand
-Class CommandResult
-Class "{abstract}\nCommand" as Command {
+  package "Parser Classes" as ParserClasses {
+    Class "<<interface>>\nParser" as Parser
+  }
+
+  ' Abstract base
+  Class "{abstract}\nCommand" as Command {
     +execute(): CommandResult throws CommandException
-}
+  }
 
+  ' Command result
+  Class CommandResult
 
-Class "<<interface>>\nLogic" as Logic
-Class LogicManager {
+  ' Logic interface and manager
+  Class "<<interface>>\nLogic" as Logic
+  Class LogicManager {
     +FILE_OPS_ERROR_FORMAT: String
-    +FILE_OPS_PERMISSION_ERROR_FORMAT:String
+    +FILE_OPS_PERMISSION_ERROR_FORMAT: String
     -model: Model
     -storage: Storage
     -addressBookParser: AddressBookParser
-}
+  }
 
-package Model {
-Class HiddenModel #FFFFFF
-}
-
-package Storage {
-}
-
-package Exception {
+  ' Exception
+  package Exception {
     Class CommandException {
-        +CommandException(message: String)
-        +CommandException(message: String, cause: Throwable)
+      +CommandException(message: String)
+      +CommandException(message: String, cause: Throwable)
     }
+  }
+
+  ' Concrete Command Classes
+  Class AddCommand
+  Class ClearCommand
+  Class DeleteCommand
+  Class DeleteTaskCommand
+  Class EditCommand
+  Class ExitCommand
+  Class FindCommand
+  Class HelpCommand
+  Class ListCommand
+  Class ListMemberTasksCommand
+  Class ReportCommand
+  Class SetDueDateCommand
+  Class TaskCommand
+  Class TaskStatusCommand
+
+  ' Inheritance relationships
+  AddCommand -up-|> Command
+  ClearCommand -up-|> Command
+  DeleteCommand -up-|> Command
+  DeleteTaskCommand -up-|> Command
+  EditCommand -up-|> Command
+  ExitCommand -up-|> Command
+  FindCommand -up-|> Command
+  HelpCommand -up-|> Command
+  ListCommand -up-|> Command
+  ListMemberTasksCommand -up-|> Command
+  ReportCommand -up-|> Command
+  SetDueDateCommand -up-|> Command
+  TaskCommand -up-|> Command
+  TaskStatusCommand -up-|> Command
+
+  ' Relationships
+  LogicManager .right.|> Logic
+  LogicManager -right-> "1" ParserClasses
+  ParserClasses ..> AddCommand : <<create>>
+  ParserClasses ..> TaskCommand : <<create>>
+
+  LogicManager .left.> Command : <<call>>
+  LogicManager --> Model
+  LogicManager --> Storage
+  Command .right.> Model
+  Command .up.> CommandResult : <<create>>
+  Command ..> CommandException : <<throws>>
+
+  Logic ..> CommandResult
+  LogicManager .down.> CommandResult
+
+  ' Notes
+  note right of TaskStatusCommand
+    Includes task-related commands:
+    TaskCommand, DeleteTaskCommand,
+    SetDueDateCommand, TaskStatusCommand,
+    ListMemberTasksCommand
+  end note
 }
 
-Class HiddenOutside #FFFFFF
-HiddenOutside ..> Logic
-
-LogicManager .right.|> Logic
-LogicManager -right->"1" ParserClasses
-ParserClasses ..> XYZCommand : <<create>>
-
-XYZCommand -up-|> Command
-LogicManager .left.> Command : <<call>>
-
-LogicManager --> Model
-LogicManager --> Storage
-Storage --[hidden] Model
-Command .[hidden]up.> Storage
-Command .right.> Model
-note right of XYZCommand: XYZCommand = AddCommand, \nFindCommand, etc
-
-Logic ..> CommandResult
-LogicManager .down.> CommandResult
-Command .up.> CommandResult : <<create>>
-
-Command ..> CommandException : <<throws>>
 @enduml

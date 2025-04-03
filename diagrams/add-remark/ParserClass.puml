@@ -1,26 +1,90 @@
 @startuml
-hide circle
-skinparam classAttributeIconSize 0
+!include ../style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor LOGIC_COLOR_T4
+skinparam classBackgroundColor LOGIC_COLOR
 
+' Base Command and Parser interface
+Class "{abstract}\nCommand" as Command
 Class "<<interface>>\nParser" as Parser
-Class RemarkCommandParser {
-  +parse(): RemarkCommand
-}
+Class ParserUtil
+Class CliSyntax
+Class Prefix
+Class ArgumentTokenizer
+Class ArgumentMultimap
 
-Class TaskCommandParser {
-  +parse(): TaskCommand
-}
+' Core Parsers
+Class AddressBookParser
+Class AddCommandParser
+Class DeleteCommandParser
+Class DeleteTaskCommandParser
+Class EditCommandParser
+Class FindCommandParser
+Class ListMemberTasksCommandParser
+Class ReportCommandParser
+Class SetDueDateCommandParser
+Class TaskCommandParser
+Class TaskStatusCommandParser
+Class RemarkCommandParser
 
-Class ParserException
+' Predicates
+Class NameContainsKeywordsPredicate
+Class TagsInKeywordsPredicate
+Class TasksInKeywordsPredicate
+
+' Commands
 Class TaskCommand
-Class TaskStatus <<enum>>
+Enum TaskStatus {
+  YET_TO_START
+  IN_PROGRESS
+  COMPLETED
+}
 
+' Inheritance
+AddCommandParser .up.|> Parser
+DeleteCommandParser .up.|> Parser
+DeleteTaskCommandParser .up.|> Parser
+EditCommandParser .up.|> Parser
+FindCommandParser .up.|> Parser
+ListMemberTasksCommandParser .up.|> Parser
+ReportCommandParser .up.|> Parser
+SetDueDateCommandParser .up.|> Parser
 TaskCommandParser .up.|> Parser
-TaskCommandParser .right.> ParserException : throws >
+TaskStatusCommandParser .up.|> Parser
+RemarkCommandParser .up.|> Parser
+
+' AddressBookParser parser creation
+AddressBookParser --> AddCommandParser : <<create>>
+AddressBookParser --> DeleteCommandParser
+AddressBookParser --> DeleteTaskCommandParser
+AddressBookParser --> EditCommandParser
+AddressBookParser --> FindCommandParser
+AddressBookParser --> ListMemberTasksCommandParser
+AddressBookParser --> ReportCommandParser
+AddressBookParser --> SetDueDateCommandParser
+AddressBookParser --> TaskCommandParser
+AddressBookParser --> TaskStatusCommandParser
+AddressBookParser --> RemarkCommandParser
+
+' Common utilities used by most parsers
+ParserUtil .down.> Prefix
+ArgumentTokenizer .down.> Prefix
+ArgumentTokenizer .left.> ArgumentMultimap
+CliSyntax ..> Prefix
+TaskCommandParser ..> ParserUtil
+TaskCommandParser ..> ArgumentMultimap
+TaskCommandParser ..> ArgumentTokenizer
+TaskCommandParser ..> CliSyntax
+RemarkCommandParser ..> ParserUtil
+
+' Predicates for FindCommand
+FindCommandParser ..> NameContainsKeywordsPredicate
+FindCommandParser ..> TagsInKeywordsPredicate
+FindCommandParser ..> TasksInKeywordsPredicate
+FindCommandParser ..> ArgumentMultimap
+
+' TaskCommand dependency
 TaskCommandParser .down.> TaskCommand : <<create>>
 TaskCommand .down.> TaskStatus : <<uses>>
 
-RemarkCommandParser .up.|> Parser
-Parser .right.> ParserException: throws >
-RemarkCommandParser .right.> ParserException: throws >
 @enduml

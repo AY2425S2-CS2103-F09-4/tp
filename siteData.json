@@ -19,7 +19,10 @@
       "src": "Configuration.md",
       "title": "Configuration guide",
       "headings": {
-        "configuration-guide": "Configuration guide"
+        "configuration-guide": "Configuration Guide",
+        "location-of-the-config-file": "📂 Location of the Config File",
+        "configuration-fields": "⚙️ Configuration Fields",
+        "editing-the-configuration": "📝 Editing the Configuration"
       },
       "headingKeywords": {}
     },
@@ -27,7 +30,7 @@
       "src": "DevOps.md",
       "title": "DevOps guide",
       "headings": {
-        "devops-guide": "DevOps guide",
+        "devops-guide-for-teamscape": "DevOps guide for TeamScape",
         "build-automation": "Build automation",
         "continuous-integration-ci": "Continuous integration (CI)",
         "code-coverage": "Code coverage",
@@ -52,7 +55,7 @@
         "common-classes": "Common classes",
         "implementation": "Implementation",
         "proposed-undo-redo-feature": "[Proposed] Undo/redo feature",
-        "proposed-data-archiving": "[Proposed] Data archiving",
+        "implementation-of-task-feature": "Implementation of Task Feature",
         "documentation-logging-testing-configuration-dev-ops": "Documentation, logging, testing, configuration, dev-ops",
         "appendix-requirements": "Appendix: Requirements",
         "product-scope": "Product scope",
@@ -81,7 +84,13 @@
       "src": "Documentation.md",
       "title": "Documentation guide",
       "headings": {
-        "documentation-guide": "Documentation Guide"
+        "documentation-guide": "Documentation Guide",
+        "feature-task-management": "📦 Feature: Task Management",
+        "1-task-model": "1. Task Model",
+        "2-task-commands-and-parsers": "2. Task Commands and Parsers",
+        "3-execution-flow": "3. Execution Flow",
+        "4-class-diagram": "4. Class Diagram",
+        "5-sequence-diagram": "5. Sequence Diagram"
       },
       "headingKeywords": {}
     },
@@ -89,7 +98,10 @@
       "src": "Logging.md",
       "title": "Logging guide",
       "headings": {
-        "logging-guide": "Logging guide"
+        "logging-guide": "Logging Guide",
+        "overview": "📋 Overview",
+        "usage": "🧰 Usage",
+        "how-to-get-a-logger": "✅ How to get a logger"
       },
       "headingKeywords": {}
     },
@@ -98,8 +110,12 @@
       "title": "Setting up and getting started",
       "headings": {
         "setting-up-and-getting-started": "Setting up and getting started",
-        "setting-up-the-project-in-your-computer": "Setting up the project in your computer",
-        "before-writing-code": "Before writing code"
+        "setting-up-the-project-on-your-computer": "🖥️ Setting up the project on your computer",
+        "before-writing-code": "🛠️ Before Writing Code",
+        "1-configure-the-coding-style": "1. Configure the Coding Style",
+        "2-ci-cd-setup-auto-configured": "2. CI/CD Setup (Auto-configured)",
+        "3-learn-the-design": "3. Learn the Design",
+        "4-do-the-tutorials": "4. Do the Tutorials"
       },
       "headingKeywords": {}
     },
@@ -107,10 +123,16 @@
       "src": "Testing.md",
       "title": "Testing guide",
       "headings": {
-        "testing-guide": "Testing guide",
-        "running-tests": "Running tests",
-        "types-of-tests": "Types of tests",
-        "taskcommmandparsertest": "TaskCommmandParserTest"
+        "testing-guide": "🧪 Testing Guide",
+        "running-tests": "✅ Running Tests",
+        "method-1-using-intellij-junit-runner": "Method 1: Using IntelliJ (JUnit Runner)",
+        "method-2-using-gradle": "Method 2: Using Gradle",
+        "types-of-tests-in-teamscape": "🧩 Types of Tests in TeamScape",
+        "1-unit-tests": "1. Unit Tests",
+        "2-integration-tests": "2. Integration Tests",
+        "3-hybrid-unit-integration-tests": "3. Hybrid (Unit + Integration) Tests",
+        "task-feature-test-cases": "🧪 Task Feature Test Cases",
+        "command-parsing": "✅ Command Parsing"
       },
       "headingKeywords": {}
     },
@@ -145,9 +167,12 @@
     },
     {
       "src": "index.md",
-      "title": "",
+      "title": "TeamScape",
       "headings": {
-        "addressbook-level-3": "AddressBook Level-3"
+        "teamscape": "TeamScape",
+        "what-can-it-do": "👨‍💼 What Can It Do?",
+        "getting-started": "🚀 Getting Started",
+        "acknowledgements": "🤝 Acknowledgements"
       },
       "headingKeywords": {}
     },

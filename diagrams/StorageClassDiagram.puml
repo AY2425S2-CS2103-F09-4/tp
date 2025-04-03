@@ -6,27 +6,30 @@ skinparam classBackgroundColor STORAGE_COLOR
 
 package Storage as StoragePackage {
 
-package "UserPrefs Storage" #F4F6F6{
-Class "<<interface>>\nUserPrefsStorage" as UserPrefsStorage
-Class JsonUserPrefsStorage
+  ' Interfaces and Manager
+  Class "<<interface>>\nUserPrefsStorage" as UserPrefsStorage
+  Class JsonUserPrefsStorage
+
+  Class "<<interface>>\nStorage" as Storage
+  Class StorageManager
+
+  package "AddressBook Storage" #F4F6F6 {
+    Class "<<interface>>\nAddressBookStorage" as AddressBookStorage
+    Class JsonAddressBookStorage
+    Class JsonSerializableAddressBook
+    Class JsonAdaptedPerson
+    Class JsonAdaptedTag
+    Class JsonAdaptedTask
+    Class JsonAdaptedSkill
+    Class JsonAdaptedOther
+  }
 }
 
-Class "<<interface>>\nStorage" as Storage
-Class StorageManager
-
-package "AddressBook Storage" #F4F6F6{
-Class "<<interface>>\nAddressBookStorage" as AddressBookStorage
-Class JsonAddressBookStorage
-Class JsonSerializableAddressBook
-Class JsonAdaptedPerson
-Class JsonAdaptedTag
-}
-
-}
-
+' External connector (UI/Logic)
 Class HiddenOutside #FFFFFF
 HiddenOutside ..> Storage
 
+' Inheritance and delegation
 StorageManager .up.|> Storage
 StorageManager -up-> "1" UserPrefsStorage
 StorageManager -up-> "1" AddressBookStorage
@@ -37,6 +40,12 @@ Storage -right-|> AddressBookStorage
 JsonUserPrefsStorage .up.|> UserPrefsStorage
 JsonAddressBookStorage .up.|> AddressBookStorage
 JsonAddressBookStorage ..> JsonSerializableAddressBook
+
+' Composition chain
 JsonSerializableAddressBook --> "*" JsonAdaptedPerson
 JsonAdaptedPerson --> "*" JsonAdaptedTag
+JsonAdaptedPerson --> "*" JsonAdaptedTask
+JsonAdaptedPerson --> "*" JsonAdaptedSkill
+JsonAdaptedPerson --> "1" JsonAdaptedOther
+
 @enduml

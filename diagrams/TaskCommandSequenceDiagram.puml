@@ -1,0 +1,26 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+Participant ":LogicManager" as logic LOGIC_COLOR
+Participant ":AddressBookParser" as abp LOGIC_COLOR
+Participant ":TaskCommandParser" as tcp LOGIC_COLOR
+Participant "command:TaskCommand" as tc LOGIC_COLOR
+Participant ":Model" as model MODEL_COLOR
+
+[-> logic : execute("task 1 t/Submit report")
+activate logic
+logic -> abp ++ : parseCommand("task 1 t/Submit report")
+create tcp
+abp -> tcp : new TaskCommandParser()
+abp -> tcp ++ : parse(arguments)
+create tc
+tcp -> tc ++ : index, description
+tc --> tcp --
+tcp --> abp -- : TaskCommand
+abp --> logic -- : TaskCommand
+logic -> tc ++ : execute(model)
+tc -> model : addTaskToPerson(index, task)
+model --> tc -- : success
+tc --> logic -- : CommandResult
+@enduml
