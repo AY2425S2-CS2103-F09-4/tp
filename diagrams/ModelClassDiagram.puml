@@ -23,11 +23,6 @@ Package Model as ModelPackage <<Rectangle>> {
   Class Task {
     - dueDate : LocalDate
   }
-  Enum TaskStatus {
-    YET_TO_START
-    IN_PROGRESS
-    COMPLETED
-  }
   Class Position
   Class Telegram
 
@@ -61,9 +56,6 @@ Person *--> "*" Skill
 Person *--> Position
 Person *--> Telegram
 Person *--> "*" Task
-
-' Task Status relationship
-Task --> TaskStatus
 
 ' ModelManager related
 ModelManager --> "1..* filtered" Person

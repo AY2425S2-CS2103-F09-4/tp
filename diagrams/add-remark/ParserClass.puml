@@ -24,21 +24,13 @@ Class ListMemberTasksCommandParser
 Class ReportCommandParser
 Class SetDueDateCommandParser
 Class TaskCommandParser
-Class TaskStatusCommandParser
+Class UpdateTaskCommandParser
 Class RemarkCommandParser
 
 ' Predicates
 Class NameContainsKeywordsPredicate
 Class TagsInKeywordsPredicate
 Class TasksInKeywordsPredicate
-
-' Commands
-Class TaskCommand
-Enum TaskStatus {
-  YET_TO_START
-  IN_PROGRESS
-  COMPLETED
-}
 
 ' Inheritance
 AddCommandParser .up.|> Parser
@@ -50,7 +42,7 @@ ListMemberTasksCommandParser .up.|> Parser
 ReportCommandParser .up.|> Parser
 SetDueDateCommandParser .up.|> Parser
 TaskCommandParser .up.|> Parser
-TaskStatusCommandParser .up.|> Parser
+UpdateTaskCommandParser .up.|> Parser
 RemarkCommandParser .up.|> Parser
 
 ' AddressBookParser parser creation
@@ -63,7 +55,7 @@ AddressBookParser --> ListMemberTasksCommandParser
 AddressBookParser --> ReportCommandParser
 AddressBookParser --> SetDueDateCommandParser
 AddressBookParser --> TaskCommandParser
-AddressBookParser --> TaskStatusCommandParser
+AddressBookParser --> UpdateTaskCommandParser
 AddressBookParser --> RemarkCommandParser
 
 ' Common utilities used by most parsers
@@ -82,9 +74,5 @@ FindCommandParser ..> NameContainsKeywordsPredicate
 FindCommandParser ..> TagsInKeywordsPredicate
 FindCommandParser ..> TasksInKeywordsPredicate
 FindCommandParser ..> ArgumentMultimap
-
-' TaskCommand dependency
-TaskCommandParser .down.> TaskCommand : <<create>>
-TaskCommand .down.> TaskStatus : <<uses>>
 
 @enduml

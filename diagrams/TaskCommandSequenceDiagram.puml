@@ -15,7 +15,7 @@ create tcp
 abp -> tcp : new TaskCommandParser()
 abp -> tcp ++ : parse(arguments)
 create tc
-tcp -> tc ++ : index, description
+tcp -> tc ++ : index, description, status
 tc --> tcp --
 tcp --> abp -- : TaskCommand
 abp --> logic -- : TaskCommand
