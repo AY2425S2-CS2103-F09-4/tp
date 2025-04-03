@@ -106,9 +106,9 @@
     },
     {
       "src": "UserGuide.md",
-      "title": "User Guide",
       "headings": {
-        "ab-3-user-guide": "AB-3 User Guide",
+        "teamscape-user-guide": "TeamScape User Guide",
+        "table-of-contents": "Table of Contents",
         "quick-start": "Quick start",
         "features": "Features",
         "viewing-help-help": "Viewing help : help",
@@ -118,6 +118,7 @@
         "editing-a-person-edit": "Editing a person : edit",
         "setting-due-date-for-a-task-setduedate": "Setting due date for a task : setduedate",
         "listing-tasks-assigned-to-a-member-listtasks": "Listing tasks assigned to a member : listtasks",
+        "deleting-a-task-under-a-member-deltask": "Deleting a task under a member : deltask",
         "updating-status-for-a-task-mark": "Updating status for a task : mark",
         "locating-persons-by-name-tags-or-tasks-find": "Locating persons by name, tags, or tasks: find",
         "generate-task-status-report-report": "Generate Task Status Report : report",
