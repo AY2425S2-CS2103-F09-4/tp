@@ -218,7 +218,7 @@ with(this){return _c('ul',[_c('li',[_c('code',{pre:true,attrs:{"class":"hljs inl
 with(this){return _c('h4',{attrs:{"id":"commands"}},[_v("Commands"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#commands","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('div',{staticClass:"table-responsive"},[_c('table',{staticClass:"markbind-table table table-bordered table-striped"},[_c('thead',[_c('tr',[_c('th',[_v("Command")]),_v(" "),_c('th',[_v("Description")])])]),_v(" "),_c('tbody',[_c('tr',[_c('td',[_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("task")])]),_v(" "),_c('td',[_v("Adds a task to a person")])]),_v(" "),_c('tr',[_c('td',[_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("deltask")])]),_v(" "),_c('td',[_v("Deletes a task from a person")])]),_v(" "),_c('tr',[_c('td',[_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("setduedate")])]),_v(" "),_c('td',[_v("Sets a due date for a specific task")])]),_v(" "),_c('tr',[_c('td',[_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("mark")])]),_v(" "),_c('td',[_v("Updates the task’s status")])]),_v(" "),_c('tr',[_c('td',[_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("listtasks")])]),_v(" "),_c('td',[_v("Lists tasks for a specific person")])]),_v(" "),_c('tr',[_c('td',[_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("report")])]),_v(" "),_c('td',[_v("Generates a task completion summary")])])])])])}
+with(this){return _c('div',{staticClass:"table-responsive"},[_c('table',{staticClass:"markbind-table table table-bordered table-striped"},[_c('thead',[_c('tr',[_c('th',[_v("Command")]),_v(" "),_c('th',[_v("Description")])])]),_v(" "),_c('tbody',[_c('tr',[_c('td',[_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("task")])]),_v(" "),_c('td',[_v("Adds a task to a person")])]),_v(" "),_c('tr',[_c('td',[_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("deltask")])]),_v(" "),_c('td',[_v("Deletes a task from a person")])]),_v(" "),_c('tr',[_c('td',[_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("setduedate")])]),_v(" "),_c('td',[_v("Sets a due date for a specific task")])]),_v(" "),_c('tr',[_c('td',[_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("mark")])]),_v(" "),_c('td',[_v("Updates the task’s status")])]),_v(" "),_c('tr',[_c('td',[_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("listtasks")])]),_v(" "),_c('td',[_v("Lists tasks for a specific person")])]),_v(" "),_c('tr',[_c('td',[_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("report")])]),_v(" "),_c('td',[_v("Generates a task status summary")])])])])])}
 },function anonymous(
 ) {
 with(this){return _c('h4',{attrs:{"id":"key-implementation-notes"}},[_v("Key Implementation Notes"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#key-implementation-notes","onclick":"event.stopPropagation()"}})])}
@@ -605,10 +605,10 @@ with(this){return _c('h3',{attrs:{"id":"generating-task-status-report"}},[_v("Ge
 with(this){return _c('p',[_c('strong',[_v("Prerequisites:")])])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_v("Have several persons with tasks in different statuses.")])])}
+with(this){return _c('ul',[_c('li',[_v("Have several persons with tasks in different statuses.")]),_v(" "),_c('li',[_v("Tasks should be categorized into statuses: Yet to Start, In Progress, and Completed.")]),_v(" "),_c('li',[_v("Person should have at least one task to be included in the report.")])])}
 },function anonymous(
 ) {
-with(this){return _c('ol',[_c('li',[_v("Test case: "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("report")]),_v(" "),_c('br'),_v(" "),_c('strong',[_v("Expected")]),_v(":\n"),_c('ul',[_c('li',[_v("Summary report displayed showing tasks grouped by status.")]),_v(" "),_c('li',[_v("Status bar shows command success.")])])])])}
+with(this){return _c('ol',[_c('li',[_v("Test case: "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("report")]),_v(" "),_c('br'),_v(" "),_c('strong',[_v("Expected")]),_v(":\n"),_c('ul',[_c('li',[_v("A summary report is displayed, grouping tasks by their status (Yet to Start, In Progress, Completed).")]),_v(" "),_c('li',[_v("Each status section shows the number of person with tasks in parentheses.")]),_v(" "),_c('li',[_v("Person under each status have their tasks listed in the order they were assigned.")]),_v(" "),_c('li',[_v("Status bar confirms successful execution")])])])])}
 },function anonymous(
 ) {
 with(this){return _c('h3',{attrs:{"id":"deleting-a-person"}},[_v("Deleting a person"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#deleting-a-person","onclick":"event.stopPropagation()"}})])}
@@ -626,6 +626,6 @@ with(this){return _c('h2',{attrs:{"id":"appendix-planned-enhancements"}},[_c('st
 with(this){return _c('p',[_c('em',[_v("coming soon after PE-D")]),_v(".")])}
 },function anonymous(
 ) {
-with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.6.0")]),_v(", generated on Fri, 4 Apr 2025, 3:09:10 GMT+8]")])])])}
+with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.6.0")]),_v(", generated on Fri, 4 Apr 2025, 3:33:25 GMT+8]")])])])}
 }];
   
