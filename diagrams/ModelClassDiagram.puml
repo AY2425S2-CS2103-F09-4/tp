@@ -31,6 +31,7 @@ Package Model as ModelPackage <<Rectangle>> {
   Class Position
   Class Telegram
 
+  ' Hidden reference for relationships
   Class I #FFFFFF
 }
 
@@ -46,9 +47,11 @@ ModelManager -left-> "1" AddressBook
 ModelManager -right-> "1" UserPrefs
 UserPrefs .up.|> ReadOnlyUserPrefs
 
+' Relationships for AddressBook and Person
 AddressBook *--> "1" UniquePersonList
 UniquePersonList --> "0..*" Person
 
+' Person fields
 Person *--> Name
 Person *--> Phone
 Person *--> Email
@@ -59,7 +62,10 @@ Person *--> Position
 Person *--> Telegram
 Person *--> "*" Task
 
+' Task Status relationship
 Task --> TaskStatus
 
+' ModelManager related
 ModelManager --> "1..* filtered" Person
+
 @enduml

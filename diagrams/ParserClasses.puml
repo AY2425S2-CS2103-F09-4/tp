@@ -24,6 +24,7 @@ package "Parser classes" {
   Class SetDueDateCommandParser
   Class TaskCommandParser
   Class TaskStatusCommandParser
+  Class UpdateTaskCommandParser
 
   Class CliSyntax
   Class ParserUtil
@@ -47,6 +48,7 @@ ReportCommandParser .up.|> Parser
 SetDueDateCommandParser .up.|> Parser
 TaskCommandParser .up.|> Parser
 TaskStatusCommandParser .up.|> Parser
+UpdateTaskCommandParser .up.|> Parser
 
 ' Parser creation relations
 AddressBookParser .down.> AddCommandParser : <<create>>
@@ -59,6 +61,7 @@ AddressBookParser .down.> ReportCommandParser : <<create>>
 AddressBookParser .down.> SetDueDateCommandParser : <<create>>
 AddressBookParser .down.> TaskCommandParser : <<create>>
 AddressBookParser .down.> TaskStatusCommandParser : <<create>>
+AddressBookParser .down.> UpdateTaskCommandParser : <<create>>
 
 ' FindCommandParser uses predicates
 FindCommandParser ..> NameContainsKeywordsPredicate

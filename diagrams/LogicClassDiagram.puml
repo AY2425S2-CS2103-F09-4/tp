@@ -8,6 +8,10 @@ package Logic as LogicPackage {
 
   package "Parser Classes" as ParserClasses {
     Class "<<interface>>\nParser" as Parser
+    Class AddressBookParser
+    Class TaskCommandParser
+    Class FindCommandParser
+    Class EditCommandParser
   }
 
   ' Abstract base
@@ -26,6 +30,7 @@ package Logic as LogicPackage {
     -model: Model
     -storage: Storage
     -addressBookParser: AddressBookParser
+    -taskCommandParser: TaskCommandParser
   }
 
   ' Exception
@@ -73,6 +78,8 @@ package Logic as LogicPackage {
   LogicManager -right-> "1" ParserClasses
   ParserClasses ..> AddCommand : <<create>>
   ParserClasses ..> TaskCommand : <<create>>
+  ParserClasses ..> FindCommand : <<create>>
+  ParserClasses ..> EditCommand : <<create>>
 
   LogicManager .left.> Command : <<call>>
   LogicManager --> Model
