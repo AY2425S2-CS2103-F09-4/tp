@@ -151,7 +151,7 @@
         "setting-due-date-for-a-task-setduedate": "Setting due date for a task : setduedate",
         "listing-tasks-assigned-to-a-member-listtasks": "Listing tasks assigned to a member : listtasks",
         "deleting-a-task-under-a-member-deltask": "Deleting a task under a member : deltask",
-        "updating-status-for-a-task-mark": "Updating status for a task : mark",
+        "updating-a-task-under-a-member-updatetask": "Updating a task under a member : updatetask",
         "locating-persons-by-name-tags-or-tasks-find": "Locating persons by name, tags, or tasks: find",
         "generate-task-status-report-report": "Generate Task Status Report : report",
         "deleting-a-person-delete": "Deleting a person : delete",
