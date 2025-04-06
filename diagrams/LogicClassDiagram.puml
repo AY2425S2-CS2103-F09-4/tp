@@ -96,7 +96,7 @@ package Logic as LogicPackage {
     Includes task-related commands:
     TaskCommand, DeleteTaskCommand,
     SetDueDateCommand, TaskStatusCommand,
-    ListMemberTasksCommand
+    ListMemberTasksCommand, ReportCommand
   end note
 }
 

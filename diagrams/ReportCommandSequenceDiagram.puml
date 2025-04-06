@@ -1,0 +1,21 @@
+@startuml
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor LOGIC_COLOR_T4
+
+Participant ":LogicManager" as logic
+Participant ":AddressBookParser" as abp
+Participant "command:ReportCommand" as rc
+Participant ":Model" as model
+Participant ":ResultDisplay" as rd
+
+logic -> abp : parseCommand("report")
+abp -> rc : new ReportCommand()
+logic -> rc : execute(model)
+rc -> model : updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS)
+rc -> model : getFilteredPersonList()
+model --> rc : List<Person>
+rc -> rc : Group persons by task status\n(for each: Yet to Start, In Progress, Completed)
+rc --> logic : CommandResult(with task lists)
+logic -> rd : setFeedbackToUser(report string)
+@enduml
