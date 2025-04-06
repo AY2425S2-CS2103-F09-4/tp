@@ -20,6 +20,7 @@ Package Model as ModelPackage <<Rectangle>> {
   Class Phone
   Class Tag
   Class Skill
+  Class Other
   Class Task {
     - dueDate : LocalDate
   }
@@ -53,6 +54,7 @@ Person *--> Email
 Person *--> Address
 Person *--> "*" Tag
 Person *--> "*" Skill
+Person *--> "*" Other
 Person *--> Position
 Person *--> Telegram
 Person *--> "*" Task
