@@ -1,5 +1,7 @@
 @startuml
 !include style.puml
+' Make layout vertical for narrower diagram
+left to right direction
 skinparam arrowThickness 1.1
 skinparam arrowColor LOGIC_COLOR_T4
 skinparam classBackgroundColor LOGIC_COLOR
@@ -12,28 +14,39 @@ TaskCommand -up-|> Command
 ' Parser package and core components
 package "Parser classes" {
 
+  ' Top interface and main parser
   Class "<<interface>>\nParser" as Parser
   Class AddressBookParser
-  Class AddCommandParser
-  Class DeleteCommandParser
-  Class DeleteTaskCommandParser
-  Class EditCommandParser
-  Class FindCommandParser
-  Class ListMemberTasksCommandParser
-  Class ReportCommandParser
-  Class SetDueDateCommandParser
-  Class TaskCommandParser
-  Class UpdateTaskCommandParser
 
-  Class CliSyntax
-  Class ParserUtil
-  Class ArgumentMultimap
-  Class ArgumentTokenizer
-  Class Prefix
+  ' Vertical stack of command parsers
+  package "Command Parsers" {
+    Class AddCommandParser
+    Class DeleteCommandParser
+    Class DeleteTaskCommandParser
+    Class EditCommandParser
+    Class FindCommandParser
+    Class ListMemberTasksCommandParser
+    Class ReportCommandParser
+    Class SetDueDateCommandParser
+    Class TaskCommandParser
+    Class UpdateTaskCommandParser
+  }
 
-  Class NameContainsKeywordsPredicate
-  Class TagsInKeywordsPredicate
-  Class TasksInKeywordsPredicate
+  ' Helper and utility classes grouped
+  package "Utilities" {
+    Class CliSyntax
+    Class ParserUtil
+    Class ArgumentMultimap
+    Class ArgumentTokenizer
+    Class Prefix
+  }
+
+  ' Predicates grouped
+  package "Predicates" {
+    Class NameContainsKeywordsPredicate
+    Class TagsInKeywordsPredicate
+    Class TasksInKeywordsPredicate
+  }
 }
 
 ' Inheritance

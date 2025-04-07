@@ -1,102 +1,96 @@
 @startuml
 !include style.puml
+' Change to left-to-right so packages stack vertically
+left to right direction
 skinparam arrowThickness 1.1
 skinparam arrowColor LOGIC_COLOR_T4
 skinparam classBackgroundColor LOGIC_COLOR
 
-package Logic as LogicPackage {
+package Logic {
 
-  package "Parser Classes" as ParserClasses {
-    Class "<<interface>>\nParser" as Parser
-    Class AddressBookParser
-    Class TaskCommandParser
-    Class FindCommandParser
-    Class EditCommandParser
+  ' Core classes
+  class "<<interface>>\nLogic"
+  class LogicManager
+  class CommandResult
+  class Model
+  class Storage
+
+  ' Abstract and exception
+  abstract class Command
+  class CommandException
+
+  ' Parser classes
+  package "Parser Classes" {
+    class "<<interface>>\nParser"
+    class AddressBookParser
+    class TaskCommandParser
+    class FindCommandParser
+    class EditCommandParser
   }
 
-  ' Abstract base
-  Class "{abstract}\nCommand" as Command {
-    +execute(): CommandResult throws CommandException
+  ' General Commands
+  package "General Commands" {
+    class AddCommand
+    class ClearCommand
+    class DeleteCommand
+    class EditCommand
+    class ExitCommand
+    class FindCommand
+    class HelpCommand
+    class ListCommand
   }
 
-  ' Command result
-  Class CommandResult
-
-  ' Logic interface and manager
-  Class "<<interface>>\nLogic" as Logic
-  Class LogicManager {
-    +FILE_OPS_ERROR_FORMAT: String
-    +FILE_OPS_PERMISSION_ERROR_FORMAT: String
-    -model: Model
-    -storage: Storage
-    -addressBookParser: AddressBookParser
-    -taskCommandParser: TaskCommandParser
+  ' Task Commands placed below General Commands
+  package "Task Commands" {
+    class TaskCommand
+    class DeleteTaskCommand
+    class ListMemberTasksCommand
+    class ReportCommand
+    class SetDueDateCommand
+    class TaskStatusCommand
   }
 
-  ' Exception
-  package Exception {
-    Class CommandException {
-      +CommandException(message: String)
-      +CommandException(message: String, cause: Throwable)
-    }
-  }
-
-  ' Concrete Command Classes
-  Class AddCommand
-  Class ClearCommand
-  Class DeleteCommand
-  Class DeleteTaskCommand
-  Class EditCommand
-  Class ExitCommand
-  Class FindCommand
-  Class HelpCommand
-  Class ListCommand
-  Class ListMemberTasksCommand
-  Class ReportCommand
-  Class SetDueDateCommand
-  Class TaskCommand
-  Class TaskStatusCommand
-
-  ' Inheritance relationships
+  ' Inheritance
   AddCommand -up-|> Command
   ClearCommand -up-|> Command
   DeleteCommand -up-|> Command
-  DeleteTaskCommand -up-|> Command
   EditCommand -up-|> Command
   ExitCommand -up-|> Command
   FindCommand -up-|> Command
   HelpCommand -up-|> Command
   ListCommand -up-|> Command
+
+  TaskCommand -up-|> Command
+  DeleteTaskCommand -up-|> Command
   ListMemberTasksCommand -up-|> Command
   ReportCommand -up-|> Command
   SetDueDateCommand -up-|> Command
-  TaskCommand -up-|> Command
   TaskStatusCommand -up-|> Command
 
-  ' Relationships
-  LogicManager .right.|> Logic
-  LogicManager -right-> "1" ParserClasses
-  ParserClasses ..> AddCommand : <<create>>
-  ParserClasses ..> TaskCommand : <<create>>
-  ParserClasses ..> FindCommand : <<create>>
-  ParserClasses ..> EditCommand : <<create>>
-
-  LogicManager .left.> Command : <<call>>
-  LogicManager --> Model
+  ' LogicManager relationships
+  LogicManager --> Command
+  LogicManager --> CommandResult
   LogicManager --> Storage
-  Command .right.> Model
-  Command .up.> CommandResult : <<create>>
+  LogicManager --> Model
+  LogicManager --> AddressBookParser
+  LogicManager --> TaskCommandParser
+  LogicManager --> "<<interface>>\nParser"
+  LogicManager --> "<<interface>>\nLogic"
+
+  ' Parser uses commands
+  "<<interface>>\nParser" --> AddCommand
+  "<<interface>>\nParser" --> EditCommand
+  "<<interface>>\nParser" --> FindCommand
+  "<<interface>>\nParser" --> TaskCommand
+
+  ' Other relations
+  Command --> CommandResult
+  Command --> Model
   Command ..> CommandException : <<throws>>
+  "<<interface>>\nLogic" --> CommandResult
 
-  Logic ..> CommandResult
-  LogicManager .down.> CommandResult
-
-  ' Notes
-  note right of TaskStatusCommand
-    Includes task-related commands:
-    TaskCommand, DeleteTaskCommand,
-    SetDueDateCommand, TaskStatusCommand,
-    ListMemberTasksCommand, ReportCommand
+  note bottom of TaskStatusCommand
+    Task-related commands:\nTaskCommand, DeleteTaskCommand,\nSetDueDateCommand, TaskStatusCommand,\nListMemberTasksCommand, ReportCommand
   end note
 }
 
