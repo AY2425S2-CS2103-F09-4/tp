@@ -14,10 +14,10 @@ with(this){return _c('h2',{attrs:{"id":"setting-up-the-project-on-your-computer"
 with(this){return _c('li',[_c('p',[_c('strong',[_v("Fork")]),_v(" this repository on GitHub, then "),_c('strong',[_v("clone")]),_v(" your fork to your computer.")])])}
 },function anonymous(
 ) {
-with(this){return _c('li',[_c('p',[_c('strong',[_v("Configure the JDK")]),_c('br'),_v("\nUse "),_c('a',{attrs:{"href":"https://se-education.org/guides/tutorials/intellijJdk.html"}},[_v("this guide")]),_v(" to set up "),_c('strong',[_v("JDK 17")]),_v(" in IntelliJ.")])])}
+with(this){return _c('li',[_c('p',[_c('strong',[_v("Configure the JDK")]),_v("\nUse "),_c('a',{attrs:{"href":"https://se-education.org/guides/tutorials/intellijJdk.html"}},[_v("this guide")]),_v(" to set up "),_c('strong',[_v("JDK 17")]),_v(" in IntelliJ.")])])}
 },function anonymous(
 ) {
-with(this){return _c('p',[_c('strong',[_v("Import as a Gradle Project")]),_c('br'),_v("\nFollow "),_c('a',{attrs:{"href":"https://se-education.org/guides/tutorials/intellijImportGradleProject.html"}},[_v("this guide")]),_v(".")])}
+with(this){return _c('p',[_c('strong',[_v("Import as a Gradle Project")]),_v("\nFollow "),_c('a',{attrs:{"href":"https://se-education.org/guides/tutorials/intellijImportGradleProject.html"}},[_v("this guide")]),_v(".")])}
 },function anonymous(
 ) {
 with(this){return _c('li',[_c('p',[_c('strong',[_v("Verify the Setup")])]),_v(" "),_c('ul',[_c('li',[_v("Run the app using "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("MainApp.java")]),_v(" (entry point: "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("seedu.address.Main")]),_v(")")]),_v(" "),_c('li',[_v("Run the tests: "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("./gradlew test")]),_v(" or open the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Testing.md")]),_v(" for guidance")]),_v(" "),_c('li',[_v("You should see the GUI and be able to enter commands like "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("list")]),_v(", "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("add")]),_v(", or "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("task")])])])])}
@@ -35,7 +35,7 @@ with(this){return _c('ul',[_c('li',[_v("Follow "),_c('a',{attrs:{"href":"https:/
 with(this){return _c('h3',{attrs:{"id":"2-ci-cd-setup-auto-configured"}},[_v("2. CI/CD Setup (Auto-configured)"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#2-ci-cd-setup-auto-configured","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('p',[_v("TeamScape uses GitHub Actions for CI. Configuration files are in "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v(".github/workflows")]),_v("."),_c('br'),_v("\nCI will automatically run on each push or pull request. No extra setup is required.")])}
+with(this){return _c('p',[_v("TeamScape uses GitHub Actions for CI. Configuration files are in "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v(".github/workflows")]),_v(".\nCI will automatically run on each push or pull request. No extra setup is required.")])}
 },function anonymous(
 ) {
 with(this){return _c('h3',{attrs:{"id":"3-learn-the-design"}},[_v("3. Learn the Design"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#3-learn-the-design","onclick":"event.stopPropagation()"}})])}
@@ -53,6 +53,6 @@ with(this){return _c('ul',[_c('li',[_c('a',{attrs:{"href":"https://se-education.
 with(this){return _c('blockquote',[_c('p',[_v("🔄 You can adapt these tutorials to your custom commands like "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("task")]),_v(", "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("mark")]),_v(", or "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("setduedate")]),_v(".")])])}
 },function anonymous(
 ) {
-with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.6.0")]),_v(", generated on Mon, 7 Apr 2025, 21:23:39 GMT+8]")])])])}
+with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.6.0")]),_v(", generated on Mon, 7 Apr 2025, 23:52:42 GMT+8]")])])])}
 }];
   
